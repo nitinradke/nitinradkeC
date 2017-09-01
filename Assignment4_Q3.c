@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
-int find_pos(char *,int,char);
-void myreplace(char * ,char *,char c);
+int find_pos(char *,int,char,int);
+void myreplace(char * ,char *,char,int);
 int main()
 {
 	char arr[100],arr1[10];
@@ -9,17 +9,17 @@ int main()
 	scanf("%s",arr);
 	scanf(" %c",&e);
 	scanf("%s",arr1);
-	myreplace(arr,arr1,e);	
+	myreplace(arr,arr1,e,0);	
 	return 0;
 }
 
-void myreplace(char *arr,char *arr1,char c)
+void myreplace(char *arr,char *arr1,char c,int start)
 {
 	int occ,i,arr_n,arr1_n;
 	arr1_n=strlen(arr1);
 	arr_n=strlen(arr);
 	
-	occ=find_pos(arr,arr_n,c);
+	occ=find_pos(arr,arr_n,c,start);
 	if(occ==-1)
 	{
 		printf("%s",arr);
@@ -35,14 +35,14 @@ void myreplace(char *arr,char *arr1,char c)
 		
 		arr[i]=arr1[s++];
 	}
-	myreplace(arr,arr1,c);
+	myreplace(arr,arr1,c,start+occ+arr1_n);
 }	
 	
 
-int find_pos(char *arr,int n,char c)
+int find_pos(char *arr,int n,char c,int start)
 {
 	int i;
-	for(i=0;i<n;i++)
+	for(i=start;i<n;i++)
 	{
 		if(arr[i]==c)
 			return i;
