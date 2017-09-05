@@ -12,6 +12,7 @@
  * now for answer simple array starts from 0 but position given in que from 1
  * so ans left+1  
 
+coder Nitin radke
 */
 
 
